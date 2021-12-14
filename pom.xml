@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.github.emraxxor.ivip</groupId>
+        <artifactId>ivip-common-backend-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath/>
+    </parent>
+
+    <artifactId>ivip-common-backend-library</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <modules>
+        <module>ivip-common-configuration</module>
+        <module>ivip-common-core</module>
+        <module>ivip-common-util</module>
+        <module>ivip-common-api</module>
+        <module>ivip-common-service</module>
+    </modules>
+    <name>IVIP-Common-Backend-Library</name>
+    <packaging>pom</packaging>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+        </dependency>
+    </dependencies>
+
+
+</project>
