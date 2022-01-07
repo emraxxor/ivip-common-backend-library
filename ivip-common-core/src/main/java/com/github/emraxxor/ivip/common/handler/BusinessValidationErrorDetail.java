@@ -1,4 +1,4 @@
-package com.github.emraxxor.ivip.common.handlers;
+package com.github.emraxxor.ivip.common.handler;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
