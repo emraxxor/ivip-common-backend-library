@@ -29,14 +29,19 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+
+/**
+ * Default configuration for exception handlers
+ *
+ * @author Attila Barna
+ */
 @Primary
 @RestControllerAdvice
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @Slf4j
 public class RestResponseEntityExceptionHandler {
 
-
-    @ExceptionHandler(value = { IllegalArgumentException.class, IllegalStateException.class })
+    @ExceptionHandler(value = { IllegalArgumentException.class, IllegalStateException.class})
     protected ResponseEntity<Object> handleConflict(RuntimeException ex, WebRequest request) {
         BusinessValidationError error = new BusinessValidationError(
                 Instant.now(),
@@ -47,7 +52,16 @@ public class RestResponseEntityExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.CONFLICT);
     }
 
-
+    @ExceptionHandler(value = { AssertionError.class})
+    protected ResponseEntity<Object> handleAssertionError(AssertionError ex, WebRequest request) {
+        BusinessValidationError error = new BusinessValidationError(
+                Instant.now(),
+                1,
+                ex.getMessage(),
+                request.getDescription(false),
+                List.of(new BusinessValidationErrorDetail(ex.getMessage(), null, null)));
+        return new ResponseEntity<>(error, HttpStatus.CONFLICT);
+    }
 
     @ExceptionHandler(BusinessValidationException.class)
     public final ResponseEntity<BusinessValidationError> handleBusinessValidationException(BusinessValidationException e, WebRequest request) {

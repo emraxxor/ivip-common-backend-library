@@ -6,6 +6,7 @@ import io.minio.MinioClient;
 import io.minio.PutObjectOptions;
 import io.minio.errors.*;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.NotNull;
@@ -18,6 +19,7 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 @Slf4j
+@ConditionalOnProperty(value = "ivip.minio.enabled", havingValue = "true")
 @Service
 public class MinioStorageService implements MinioStorage {
 
@@ -46,7 +48,7 @@ public class MinioStorageService implements MinioStorage {
             minioClient.putObject(bucketName, objectName, bais, putObjectOptions);
         } catch (ErrorResponseException | InsufficientDataException | InternalException | InvalidBucketNameException | InvalidKeyException | InvalidResponseException | IOException | NoSuchAlgorithmException | XmlParserException e) {
             log.error(e.getMessage(), e);
-            throw new BusinessValidationException("The image could not be created.");
+            throw new BusinessValidationException("The Bucket could not be created.");
         }
     }
 
@@ -65,7 +67,7 @@ public class MinioStorageService implements MinioStorage {
             minioClient.removeObject(bucketName, objectName);
         } catch (ErrorResponseException | InsufficientDataException | InternalException | InvalidBucketNameException | InvalidKeyException | InvalidResponseException | IOException | NoSuchAlgorithmException | XmlParserException ex) {
             log.error(ex.getMessage(),ex);
-            throw new BusinessValidationException("The image could not be removed.");
+            throw new BusinessValidationException("The bucket could not be removed.");
         }
     }
 

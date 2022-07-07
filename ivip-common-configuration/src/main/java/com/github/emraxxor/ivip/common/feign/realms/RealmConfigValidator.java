@@ -6,15 +6,15 @@ public class RealmConfigValidator {
 
     public static void validate(ClientCredentialsResourceDetails rd) {
         if (nullOrMissing(rd.getAccessTokenUri())) {
-            throw new IllegalArgumentException("Hiányzó Access Token URI!");
+            throw new IllegalArgumentException("Null or missing Access Token URI!");
         }
 
         if (nullOrMissing(rd.getClientId())) {
-            throw new IllegalArgumentException("Hiányzó ClientId!");
+            throw new IllegalArgumentException("Null or missing ClientId!");
         }
 
         if (nullOrMissing(rd.getClientSecret())) {
-            throw new IllegalArgumentException("Hiányzó Client Secret!");
+            throw new IllegalArgumentException("Null or missing Client Secret!");
         }
     }
 

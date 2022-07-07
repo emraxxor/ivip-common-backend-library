@@ -1,0 +1,28 @@
+{
+  "properties": [
+    {
+      "name": "ivip.elasticsearch.enabled",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "name": "ivip.feign.enabled",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "name": "ivip.auth.enabled",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "name": "ivip.auth.feign.public.enabled",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "name": "ivip.auth.feign.photo.enabled",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "name": "ivip.swagger.enabled",
+      "type": "java.lang.Boolean"
+    }
+  ]
+}
