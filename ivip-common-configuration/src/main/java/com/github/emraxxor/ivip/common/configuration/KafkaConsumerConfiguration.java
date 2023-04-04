@@ -11,6 +11,5 @@ import org.springframework.kafka.annotation.EnableKafka;
 @EnableKafka
 @RequiredArgsConstructor
 public class KafkaConsumerConfiguration {
-
     private final KafkaConsumerConfigurationData configuration;
 }

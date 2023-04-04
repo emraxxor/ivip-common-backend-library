@@ -1,7 +1,6 @@
 package com.github.emraxxor.ivip.common.kafka;
 
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.emraxxor.ivip.common.configuration.data.KafkaProducerConfigurationData;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -43,7 +42,9 @@ public abstract class AbstractEventProducer<K,V,Z extends EventType> implements 
             }
 
             @Override
-            public void onSuccess(SendResult<K, V> result) {}
+            public void onSuccess(SendResult<K, V> result) {
+                log.debug(result.toString());
+            }
         });
         return listenableFuture;
     }

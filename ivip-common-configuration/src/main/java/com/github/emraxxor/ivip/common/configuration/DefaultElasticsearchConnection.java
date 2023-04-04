@@ -9,8 +9,8 @@ package com.github.emraxxor.ivip.common.configuration;
  */
 public interface DefaultElasticsearchConnection<CLIENT, TEMPLATE> {
 
-	public CLIENT client();
+	CLIENT client();
 	
-	public TEMPLATE template();
+	TEMPLATE template();
 	
 }

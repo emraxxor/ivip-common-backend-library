@@ -1,8 +1,6 @@
 package com.github.emraxxor.ivip.common.configuration.service;
 
 import io.minio.MinioClient;
-import io.minio.errors.InvalidEndpointException;
-import io.minio.errors.InvalidPortException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -31,8 +29,11 @@ public class MinioServiceConfiguration {
     @Bean
     MinioClient minioClientBean() {
         try {
-            return new MinioClient(server, accessKey, secretKey);
-        } catch (InvalidEndpointException | InvalidPortException e) {
+            return MinioClient.builder()
+                    .endpoint(server)
+                    .credentials(accessKey, secretKey)
+                    .build();
+        } catch (Exception e) {
             log.error(e.getMessage());
         }
         log.warn("Connection could not be established!");

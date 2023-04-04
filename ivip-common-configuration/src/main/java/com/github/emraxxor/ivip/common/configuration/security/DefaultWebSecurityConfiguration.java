@@ -1,6 +1,5 @@
 package com.github.emraxxor.ivip.common.configuration.security;
 
-import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
 import org.keycloak.adapters.springsecurity.KeycloakConfiguration;
 import org.keycloak.adapters.springsecurity.KeycloakSecurityComponents;
 import org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider;
@@ -38,11 +37,6 @@ public class DefaultWebSecurityConfiguration extends KeycloakWebSecurityConfigur
         KeycloakAuthenticationProvider keycloakAuthenticationProvider = keycloakAuthenticationProvider();
         keycloakAuthenticationProvider.setGrantedAuthoritiesMapper(new SimpleAuthorityMapper());
         auth.authenticationProvider(keycloakAuthenticationProvider);
-    }
-
-    @Bean
-    public KeycloakSpringBootConfigResolver KeycloakConfigResolver() {
-        return new KeycloakSpringBootConfigResolver();
     }
 
     @Bean

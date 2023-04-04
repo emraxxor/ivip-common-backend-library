@@ -6,7 +6,6 @@ import com.github.emraxxor.ivip.common.es.container.ESContainerIF;
 import com.github.emraxxor.ivip.common.es.manager.DocumentManager;
 import com.github.emraxxor.ivip.common.filter.DocumentBoolQueryBuilder;
 import com.github.emraxxor.ivip.common.filter.Filter;
-import com.github.emraxxor.ivip.common.scroll.AbstractScrollResponse;
 import com.github.emraxxor.ivip.common.scroll.DefaultBoolScrollSourceResponse;
 import com.github.emraxxor.ivip.common.scroll.DefaultScrollResponse;
 import com.github.emraxxor.ivip.common.scroll.ScrollResponseGenerator;
