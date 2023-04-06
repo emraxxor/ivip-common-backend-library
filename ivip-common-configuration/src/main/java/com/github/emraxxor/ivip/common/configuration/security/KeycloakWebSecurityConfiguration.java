@@ -3,6 +3,8 @@ package com.github.emraxxor.ivip.common.configuration.security;
 import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
 import org.keycloak.adapters.springsecurity.KeycloakConfiguration;
 import org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider;
+import org.keycloak.adapters.springsecurity.client.KeycloakClientRequestFactory;
+import org.keycloak.adapters.springsecurity.client.KeycloakRestTemplate;
 import org.keycloak.adapters.springsecurity.config.KeycloakWebSecurityConfigurerAdapter;
 import org.keycloak.adapters.springsecurity.filter.KeycloakAuthenticatedActionsFilter;
 import org.keycloak.adapters.springsecurity.filter.KeycloakAuthenticationProcessingFilter;
@@ -37,6 +39,7 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 @Profile("ivip-keycloak")
 public class KeycloakWebSecurityConfiguration extends KeycloakWebSecurityConfigurerAdapter {
 
+
     @Value("${ivip.auth.disable-public-endpoints:false}")
     private boolean disablePublicEndpoints;
 
@@ -58,6 +61,12 @@ public class KeycloakWebSecurityConfiguration extends KeycloakWebSecurityConfigu
     protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
         return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
     }
+
+    @Bean
+    public KeycloakRestTemplate keycloakRestTemplate(KeycloakClientRequestFactory keycloakClientRequestFactory) {
+        return new KeycloakRestTemplate(keycloakClientRequestFactory);
+    }
+
 
     @Bean
     public FilterRegistrationBean<KeycloakAuthenticationProcessingFilter> keycloakAuthenticationProcessingFilterRegistrationBean(
